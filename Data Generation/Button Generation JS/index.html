@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+
+<html>
+
+    <head>
+        <title>Button Generation Practice</title>
+        <meta charset="utf8">
+    </head>
+
+    <body>
+        <!-- The controls for generating buttons and downloading the labels afterwards -->
+        <button onclick="GenerateNewButtonStyle()">Generate</button>
+        <button onclick="StartLabelGeneration()">Start Labels</button>
+        <button onclick="DownloadLabels()">Download Labels</button>
+        <br><br>
+        
+        <!-- This is the actual button that we stylize, wrapped in a div to keep them all centered -->
+        <div class="wrapper">
+            <button class="button" id="btn">Click</button>
+        </div>
+
+    </body>
+
+    <footer>
+        <link rel="stylesheet" type="text/css" href="./CSS/style.css">
+        <script type="text/javascript" src="./JS/StyleGenerator.js"></script>
+        <script type="text/javascript" src="./JS/LabelGenerator.js"></script>
+    </footer>
+
+</html>

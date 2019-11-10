@@ -1,0 +1,10 @@
+/* Found here: http://jsfiddle.net/loktar/cynbp3j0/ */
+.wrapper
+{
+    width: 200px;
+    height: 200px;
+    /*border: 1px solid black;*/
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
