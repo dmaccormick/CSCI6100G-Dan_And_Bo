@@ -68,9 +68,3 @@ CreateStyleDynamically = () =>
     // Set up the click information
     styleTag.sheet.insertRule(".button:active {background: darkgreen}", 4);
 }
-
-// Download the image as a PNG
-DownloadButtonImage = () =>
-{
-    console.log("Downloading!");
-}
