@@ -4,7 +4,7 @@ let imageListNormalized = [];
 let imageListShortened = [];
 let labels = [];
 let neuralNet;
-const NUM_IMAGES_TO_LOAD = 10;
+const NUM_IMAGES_TO_LOAD = 100;
 
 
 // WHAT HAVE WE LEARNED
@@ -29,7 +29,7 @@ function preload()
 
     // Get the first image's filepath from the input
     //const inputElement = document.getElementById('firstImageName');
-    const filename = 'Screenshot_2019-12-04 Button Generation Practice(0)';
+    const filename = 'Screenshot_2019-12-05 Button Generation Practice(0)';
 
     // Find the place where we can change the ID of the image (look for the bracket and then edit the number inside of it)
     const bracketIndex = filename.indexOf('(');
@@ -173,8 +173,8 @@ const Train = () =>
 
     // Set up the training parameters
     const nnTrainingInfo = {
-        epochs: 10,
-        batchSize: 4
+        epochs: 250,
+        batchSize: 25
     };
 
     // Train the neural net
@@ -186,7 +186,7 @@ const Train = () =>
 //--- Neural Net Callbacks ---//
 const WhileTraining = (epoch, logs) => {
     // Output information about the training progress
-    console.log(`Epoch: ${epoch + 1} - loss: ${logs.loss.toFixed(2)}`);
+    console.log(`Epoch: ${epoch + 1} - loss: ${logs.loss}`);
 };
 
 const FinishedTraining = () => {

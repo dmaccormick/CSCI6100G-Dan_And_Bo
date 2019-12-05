@@ -17,29 +17,29 @@ MouseClick("left")
 local $current = 0
 
 ; Define a variable for how many screenshots we want to take
-local $max = 10
+local $max = 100
 
 ; Loop and take screenshots. Loop starts at Do and ends at Until
 Do
    ; Move to the generate button and click
-   MouseMove(48, 112, 1)
+   MouseMove(48, 112, 2)
    MouseClick("left")
 
    ; Moves away and right clicks to open the options
-   MouseMove(250,250, 1)
+   MouseMove(250,250, 2)
    MouseClick("right")
 
    ; Move down to "Take Screenshot" and then click
-   MouseMove(351, 487, 1)
+   MouseMove(351, 487, 2)
    MouseClick("left")
 
    ; Move back into the button element box so Firefox highlights it
-   MouseMove(140, 230, 2) ; This HAS to be a speed of 2 or more (needs time to process)
+   MouseMove(150, 240, 2) ; This HAS to be a speed of 2 or more (needs time to process)
    MouseClick("left")
 
    ; Move down to the download button and click it. This automatically saves the image to the downloads folder
    ; The name of the image is defaulted to a timestamp ... will need to write a script to clean this up later
-   MouseMove(220, 280, 1)
+   MouseMove(220, 280, 2)
    MouseClick("left")
 
    ; Increase the counter
