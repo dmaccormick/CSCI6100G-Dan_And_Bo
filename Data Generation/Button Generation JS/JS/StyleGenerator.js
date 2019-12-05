@@ -35,7 +35,7 @@ GenerateNewButtonStyle = () =>
     labelInfo.SetBorderStyle(borderStyle);
 
     // Font size
-    const fontSize = Math.floor(Math.random() * 60) + 10; // Plus 1 prevents invisible text
+    const fontSize = Math.floor(Math.random() * 40) + 10; // Plus 1 prevents invisible text
     buttonObject.style.setProperty("font-size", `${fontSize}px`);
     labelInfo.SetFontSize(fontSize);
 

@@ -1,3 +1,11 @@
+; Define an exit function to stop the script just in case
+Func _Exit()
+   Exit
+EndFunc
+
+; Bind a hotkey to the exit function (Press F8 to stop!)
+HotKeySet("{ESC}", "_Exit")
+
 ; Mode 1 means relative to the top left of the primary screen (right hand screen)
 Opt("MouseCoordMode", 1)
 
@@ -9,7 +17,7 @@ MouseClick("left")
 local $current = 0
 
 ; Define a variable for how many screenshots we want to take
-local $max = 20
+local $max = 30
 
 ; Loop and take screenshots. Loop starts at Do and ends at Until
 Do
@@ -26,12 +34,12 @@ Do
    MouseClick("left")
 
    ; Move back into the button element box so Firefox highlights it
-   MouseMove(180, 180, 2)
+   MouseMove(140, 230, 2) ; This HAS to be a speed of 2 or more (needs time to process)
    MouseClick("left")
 
    ; Move down to the download button and click it. This automatically saves the image to the downloads folder
    ; The name of the image is defaulted to a timestamp ... will need to write a script to clean this up later
-   MouseMove(140, 380, 1)
+   MouseMove(220, 280, 1)
    MouseClick("left")
 
    ; Increase the counter
