@@ -12,6 +12,12 @@ class LabelInfo
         this._backgroundColour = `[${rNorm}~${gNorm}~${bNorm}~${a}]`;
     }
 
+    SetBackgroundColourWithName(colourName)
+    {
+        // This is the name of the colour (ex: "red", "green", etc)
+        this._backgroundColour = colourName;
+    }
+
     /* Feature 2 - Border Width */
     SetBorderWidth(width)
     {

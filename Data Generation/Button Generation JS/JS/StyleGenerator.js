@@ -8,12 +8,17 @@ GenerateNewButtonStyle = () =>
     const labelInfo = new LabelInfo();
 
     // Base Colour
-    const colourR = Math.floor(Math.random() * 256);
-    const colourG = Math.floor(Math.random() * 256);
-    const colourB = Math.floor(Math.random() * 256);
-    const colourA = Math.random(); // Alpha is on a range from 0 - 1
-    buttonObject.style.setProperty("background", `rgba(${colourR},${colourG},${colourB},${colourA})`);
-    labelInfo.SetBackgroundColour(colourR, colourG, colourB, colourA);
+    // const colourR = Math.floor(Math.random() * 256);
+    // const colourG = Math.floor(Math.random() * 256);
+    // const colourB = Math.floor(Math.random() * 256);
+    // const colourA = Math.random(); // Alpha is on a range from 0 - 1
+    const colours = ["red", "orange", "yellow", "green", "blue", "purple"];
+    const selectedColourIndex = Math.floor(Math.random() * colours.length);
+    const selectedColour = colours[selectedColourIndex];
+    //buttonObject.style.setProperty("background", `rgba(${colourR},${colourG},${colourB},${colourA})`);
+    buttonObject.style.setProperty("background", `${selectedColour}`);
+    //labelInfo.SetBackgroundColour(colourR, colourG, colourB, colourA);
+    labelInfo.SetBackgroundColourWithName(`${selectedColour}`);
 
     // Border width
     const borderWidth = Math.floor(Math.random() * 10);
