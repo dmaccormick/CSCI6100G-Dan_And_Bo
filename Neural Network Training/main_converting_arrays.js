@@ -2,6 +2,7 @@
 let imageList = [];
 let imageListNormalized = [];
 let imageListShortened = [];
+let labels = [];
 let neuralNet;
 const NUM_IMAGES_TO_LOAD = 10;
 
@@ -19,6 +20,8 @@ const NUM_IMAGES_TO_LOAD = 10;
 //--- p5 Functions ---//
 function preload() 
 {
+    console.log('preload()');
+
     // Clear the saved info
     imageList = [];
     imageListNormalized = [];
@@ -53,7 +56,38 @@ function preload()
     }
 }
 
-function setup() 
+function setup() {
+    console.log('setup');
+}
+
+
+const OnCSVLoaded = () =>
+{
+    // Clear the existing labels
+    labels = [];
+
+    // Grab the file object from the HTML
+    const fileElement = document.getElementById('labelCSV');
+    
+    // Read in the entire file
+    ReadEntireFile(fileElement, function(fileContents) 
+    {
+        // Split the CSV into lines and drop the last one
+        const csvLines = fileContents.split('\n');
+        csvLines.pop();
+
+        // Parse each line into a label object and save it to the array
+        for (let i = 0; i < csvLines.length; i++) {
+            labels.push(new LabelObject(csvLines[i]));
+        }
+
+        // Enable the training button
+        document.getElementById('trainButton').disabled = false;
+    });
+};
+
+
+const Train = () => 
 {
     // Convert the UInt8 arrays to regular arrays and then normalize down to 0-1
     for (let i = 0; i < NUM_IMAGES_TO_LOAD; i++) 
@@ -115,10 +149,8 @@ function setup()
     // Add the loaded labels into the neural net outputs
     for (let i = 0; i < NUM_IMAGES_TO_LOAD; i++) 
     {
-        // TEMP: Grab a random label
-        // TODO: Grab the actual labels
-        let labels = ['red', 'orange', 'purple', 'green'];
-        let label = labels[Math.floor(Math.random() * labels.length)]; // = labelManager.GetColourLabel(i);
+        // Grab the label from the CSV loaded object
+        let label = labels[i]._backgroundColour;
 
         // Send the label to the output list, embedding it into an array
         nnOutputs.push([label]); 
@@ -147,7 +179,7 @@ function setup()
 
     // Train the neural net
     nn.train(nnTrainingInfo, WhileTraining, FinishedTraining);
-}
+};
 
 
 

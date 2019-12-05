@@ -13,6 +13,8 @@
   <script src="https://unpkg.com/ml5@0.4.3/dist/ml5.min.js"></script>
 
   <!-- Scripts -->
+  <script src="File_Reader.js"></script>
+  <script src="LabelObject.js"></script>
   <script src="main_converting_arrays.js"></script>
 </head>
 
@@ -23,8 +25,8 @@
   <!-- Input for Training -->
   <h1>Training Information</h1>
   <input type="text" id="firstImageName" value="Screenshot_2019-12-04 Button Generation Practice(0)">First Image Name</input><br>
-  <input type="file" id="labelCSV">Select Label CSV</input><br>
-  <button onclick="StartTraining()">Train</button>
+  <input type="file" id="labelCSV" accept=".csv" onchange="OnCSVLoaded()" onclick="this.value=null">Select Label CSV</input><br>
+  <button onclick="Train()" id="trainButton" disabled=true>Train</button>
   <br>
   <br>
   <br>
