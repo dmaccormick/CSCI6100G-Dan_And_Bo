@@ -15,7 +15,7 @@
   <!-- Scripts -->
   <script src="File_Reader.js"></script>
   <script src="LabelObject.js"></script>
-  <script src="main_converting_arrays.js"></script>
+  <script src="main_image_classification.js"></script>
 </head>
 
 <body>
@@ -26,7 +26,9 @@
   <h1>Training Information</h1>
   <input type="text" id="firstImageName" value="Screenshot_2019-12-04 Button Generation Practice(0)">First Image Name</input><br>
   <input type="file" id="labelCSV" accept=".csv" onchange="OnCSVLoaded()" onclick="this.value=null">Select Label CSV</input><br>
+  <button onclick="GiveImages()">Give Images</button>
   <button onclick="Train()" id="trainButton" disabled=true>Train</button>
+  <button onclick="TestClassify()">Test Classify</button>
   <br>
   <br>
   <br>
@@ -40,6 +42,11 @@
   <!-- Input for Testing -->
   <h1>Testing Information</h1>
   <input type="file" id="testImageInput" onchange="LoadInputImage()">Select Image To Test</input>
+
+  <!-- Image Placement -->
+  <div id ="imgDiv">
+      
+  </div>
   
   
 </body>
