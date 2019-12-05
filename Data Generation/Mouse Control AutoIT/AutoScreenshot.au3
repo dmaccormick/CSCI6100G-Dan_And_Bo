@@ -17,7 +17,7 @@ MouseClick("left")
 local $current = 0
 
 ; Define a variable for how many screenshots we want to take
-local $max = 30
+local $max = 10
 
 ; Loop and take screenshots. Loop starts at Do and ends at Until
 Do
