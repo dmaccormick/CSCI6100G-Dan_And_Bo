@@ -1,4 +1,4 @@
-const NUM_IMAGES_TO_LOAD = 100;
+const NUM_IMAGES_TO_LOAD = 600;
 let imageList = [];
 let labels = [];
 let promises = [];
@@ -61,11 +61,11 @@ function setup() {
 
     // Define the nn options
     const nnOptions = {
-        //topk: 3,
-        //learningRate: 0.0001,
-        //hiddenUnits: 100,
-        //epochs: 20,
-        numLabels: 6, //6 for colours, 8? for border width
+        topk: 0,
+        learningRate: 0.0001,
+        hiddenUnits: 100,
+        epochs: 100,
+        numLabels: 6, //6 for colours, 9 for border width
     };
 
     // Setup the feature extractor
@@ -107,7 +107,7 @@ const OnCSVLoaded = () => {
 
 const GiveImages = () => {
     // Loop through and add our images to the classifier with their corresponding label
-    for (let i = 0; i < imageList.length; i++) {
+    for (let i = 0; i < imageList.length * 0.8; i++) {
         // Grab the label
         const imageLabel = labels[i]._backgroundColour;
 
@@ -182,7 +182,7 @@ const TestClassify = () =>
     correctGuesses = 0;
 
     // Test it on all of the data that we just did
-    for (let i = 0; i < imageList.length; i++) 
+    for (let i = imageList.length * 0.8; i < imageList.length; i++) 
     {
         classifier.classify(imageList[i], function (err, result) 
         {
@@ -190,7 +190,14 @@ const TestClassify = () =>
                 console.error(err);
             }
             else {
-                console.log(`[${i + 1}] : label = ${labels[i]._backgroundColour}  ->  guess = ${result[0].label}  (confidence = ${result[0].confidence})`);
+                // output the result
+                let outputString = `[${i + 1}] label = ${labels[i]._backgroundColour}\n`;
+                
+                for (let j = 0; j < result.length; j++) {
+                    outputString += `guess [${j + 1}] = ${result[j].label}  (confidence = ${result[j].confidence})\n`;
+                }
+
+                console.log(outputString);
 
                 if (labels[i]._backgroundColour === result[0].label) {
                     correctGuesses++;
@@ -203,5 +210,5 @@ const TestClassify = () =>
 const OutputAccuracy = () => 
 {
     // Write out the accuracy value to the console
-    console.log(`Attempts: ${imageList.length}      Correct Guesses: ${correctGuesses}    Accuracy: ${100 * (correctGuesses / imageList.length)}%`);
+    console.log(`Attempts: ${imageList.length * 0.2}      Correct Guesses: ${correctGuesses}    Accuracy: ${100 * (correctGuesses / (0.2 * imageList.length))}%`);
 };

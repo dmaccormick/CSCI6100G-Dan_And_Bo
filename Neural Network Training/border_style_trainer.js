@@ -1,4 +1,4 @@
-const NUM_IMAGES_TO_LOAD = 100;
+const NUM_IMAGES_TO_LOAD = 600;
 let imageList = [];
 let labels = [];
 let promises = [];
