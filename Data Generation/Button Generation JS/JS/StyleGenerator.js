@@ -8,63 +8,57 @@ GenerateNewButtonStyle = () =>
     const labelInfo = new LabelInfo();
 
     // Base Colour
-    // const colourR = Math.floor(Math.random() * 256);
-    // const colourG = Math.floor(Math.random() * 256);
-    // const colourB = Math.floor(Math.random() * 256);
-    // const colourA = Math.random(); // Alpha is on a range from 0 - 1
     const colours = ["red", "orange", "yellow", "green", "blue", "purple"];
     const selectedColourIndex = Math.floor(Math.random() * colours.length);
     const selectedColour = colours[selectedColourIndex];
-    //buttonObject.style.setProperty("background", `rgba(${colourR},${colourG},${colourB},${colourA})`);
-    buttonObject.style.setProperty("background", `${selectedColour}`);
-    //labelInfo.SetBackgroundColour(colourR, colourG, colourB, colourA);
-    labelInfo.SetBackgroundColourWithName(`${selectedColour}`);
+    buttonObject.style.setProperty("background", selectedColour);
+    labelInfo.SetBackgroundColour(selectedColour);
 
     // Border width
-    const borderWidth = Math.floor(Math.random() * 10);
-    buttonObject.style.setProperty("border-width", `${borderWidth}px`)
+    const borderWidths = ['1px', '2px', '3px', '4px', '5px', '6px', '7px', '8px', '9px', '10px'];
+    const borderWidthIndex = Math.floor(Math.random() * borderWidths.length);
+    const borderWidth = borderWidths[borderWidthIndex];
+    buttonObject.style.setProperty("border-width", borderWidth);
     labelInfo.SetBorderWidth(borderWidth);
 
     // Border colour
-    const borderColourR = Math.floor(Math.random() * 256);
-    const borderColourG = Math.floor(Math.random() * 256);
-    const borderColourB = Math.floor(Math.random() * 256);
-    buttonObject.style.setProperty("border-color", `rgb(${borderColourR},${borderColourG},${borderColourB})`);
-    labelInfo.SetBorderColour(borderColourR, borderColourG, borderColourB);
+    const borderColourIndex = Math.floor(Math.random() * colours.length);
+    const selectedBorderColour = colours[borderColourIndex];
+    buttonObject.style.setProperty("border-color", selectedBorderColour);
+    labelInfo.SetBorderColour(selectedBorderColour);
 
     // Border style
-    const borderStyles = ["solid", "dashed", "inset", "dotted", "outset", "ridge", "double", "groove", "none"];
+    const borderStyles = ["solid", "dashed", "inset", "dotted", "outset", "ridge", "double", "groove"];
     const borderStyleIndex = Math.floor(Math.random() * borderStyles.length);
     const borderStyle = borderStyles[borderStyleIndex];
-    buttonObject.style.setProperty("border-style", `${borderStyle}`);
+    buttonObject.style.setProperty("border-style", borderStyle);
     labelInfo.SetBorderStyle(borderStyle);
 
     // Font size
-    const fontSize = Math.floor(Math.random() * 40) + 10; // Plus 1 prevents invisible text
-    buttonObject.style.setProperty("font-size", `${fontSize}px`);
+    const fontSizes = ['10px', '15px', '20px', '25px', '30px', '35px', '40px', '45px', '50px'];
+    const fontSizeIndex = Math.floor(Math.random() * fontSizes.length);
+    const fontSize = fontSizes[fontSizeIndex];
+    buttonObject.style.setProperty("font-size", fontSize);
     labelInfo.SetFontSize(fontSize);
 
-    // Padding
-    //const paddingSize = Math.floor(Math.random() * 30);
-    //buttonObject.style.setProperty("padding", `10px`);
-
     // Border Radius
-    const borderRadius = Math.floor(Math.random() * 50);
-    buttonObject.style.setProperty("border-radius", `${borderRadius}px`);
+    const borderRadiusIndex = Math.floor(Math.random() * fontSizes.length);
+    const borderRadius = fontSizes[borderRadiusIndex];
+    buttonObject.style.setProperty("border-radius", borderRadius);
     labelInfo.SetBorderRadius(borderRadius);
 
     // Shadow size (on the y axis only)
-    const shadowSizeY = Math.floor(Math.random() * 10);
-    labelInfo.SetShadowWidth(shadowSizeY);
+    const shadowSizeIndex = Math.floor(Math.random() * borderWidths.length);
+    const shadowSize = borderWidths[shadowSizeIndex];
+    labelInfo.SetShadowWidth(shadowSize);
     
     // Shadow colour
-    const shadowColourR = Math.floor(Math.random() * 256);
-    const shadowColourG = Math.floor(Math.random() * 256);
-    const shadowColourB = Math.floor(Math.random() * 256);
-    labelInfo.SetShadowColour(shadowColourR, shadowColourG, shadowColourB);
+    const shadowColourIndex = Math.floor(Math.random() * colours.length);
+    const shadowColour = colours[shadowColourIndex];
+    labelInfo.SetShadowColour(shadowColour);
 
     // Apply both shadow size and colour
-    buttonObject.style.setProperty("box-shadow", `0px ${shadowSizeY}px rgb(${shadowColourR},${shadowColourG},${shadowColourB})`);
+    buttonObject.style.setProperty("box-shadow", `0px ${shadowSize} ${shadowColour}`);
 
     // Add the label information to the list stored in LabelGenerator.js
     AddLabel(labelInfo);
