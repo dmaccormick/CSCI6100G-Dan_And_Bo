@@ -1,7 +1,7 @@
 //--- Constant Data ---//
 const IMAGE_FOLDER_PATH = 'data/';
 const FILENAME_BASE = 'Button_Img_ (';
-const NUM_IMAGES_TOTAL = 100;
+const NUM_IMAGES_TOTAL = 50;
 const TRAINING_PERCENTAGE = 0.8;
 const LAST_TRAINING_INDEX = TRAINING_PERCENTAGE * NUM_IMAGES_TOTAL;
 
@@ -26,7 +26,14 @@ function preload()
     labelObjects = [];
 
     // Initialize the neural net list
-    neuralNets.push(new NeuralNet('nn_bg_colour', '_backgroundColour', 6));
+    neuralNets.push(new NeuralNet('nn_background_colour', '_backgroundColour', 6));
+    neuralNets.push(new NeuralNet('nn_border_width', '_borderWidth', 10));
+    neuralNets.push(new NeuralNet('nn_border_colour', '_borderColour', 6));
+    neuralNets.push(new NeuralNet('nn_border_style', '_borderStyle', 8));
+    neuralNets.push(new NeuralNet('nn_font_size', '_fontSize', 9));
+    neuralNets.push(new NeuralNet('nn_border_radius', '_borderRadius', 9));
+    neuralNets.push(new NeuralNet('nn_shadow_size', '_shadowSize', 10));
+    neuralNets.push(new NeuralNet('nn_shadow_colour', '_shadowColour', 6));
 
     // Load all of the images in
     LoadImages();
