@@ -1,34 +1,24 @@
 class LabelInfo
 {
     /* Feature 1 - BG Colour */
-    SetBackgroundColour(r, g, b, a)
+    SetBackgroundColour(colour)
     {
-        // Normalize the colour values between 0 - 1. Alpha is between 0 and 1 already so no need to
-        const rNorm = r / 255.0;
-        const gNorm = g / 255.0;
-        const bNorm = b / 255.0;
-
-        // Save the background colour as a string, with ~ as a separator between values
-        this._backgroundColour = `[${rNorm}~${gNorm}~${bNorm}~${a}]`;
+         // This is the name of the colour (ex: "red", "green", etc)
+         this._backgroundColour = colour;
     }
 
     /* Feature 2 - Border Width */
     SetBorderWidth(width)
     {
         // Save the border width as a string
-        this._borderWidth = `${width}`;
+        this._borderWidth = width;
     }
 
     /* Feature 3 - Border Colour */
-    SetBorderColour(r, g, b)
+    SetBorderColour(colour)
     {
-        // Normalize the colour values between 0 - 1
-        const rNorm = r / 255.0;
-        const gNorm = g / 255.0;
-        const bNorm = b / 255.0;
-
         // Save the border colour as a string, with ~ as a separator between values
-        this._borderColour = `[${rNorm}~${gNorm}~${bNorm}]`;
+        this._borderColour = colour;
     }
 
     /* Feature 4 - Border Style */
@@ -42,33 +32,28 @@ class LabelInfo
     SetFontSize(fontSize)
     {
         // Save the font size as a string
-        this._fontSize = `${fontSize}`;
+        this._fontSize = fontSize;
     }
 
     /* Feature 6 - Border Radius */
     SetBorderRadius(borderRadius)
     {
         // Save the border radius as a string
-        this._borderRadius = `${borderRadius}`;
+        this._borderRadius = borderRadius;
     }
 
     /* Feature 7 - Shadow Size */
     SetShadowWidth(shadowWidth)
     {
         // Save the shadow width as a string
-        this._shadowWidth = `${shadowWidth}`;
+        this._shadowWidth = shadowWidth;
     }
 
     /* Feature 8 - Shadow colour */
-    SetShadowColour(r, g, b)
+    SetShadowColour(colour)
     {
-        // Normalize the colour values between 0 - 1
-        const rNorm = r / 255.0;
-        const gNorm = g / 255.0;
-        const bNorm = b / 255.0;
-
         // Save the shadow colour as a string, with ~ as a separator between values
-        this._shadowColour = `[${rNorm}~${gNorm}~${bNorm}]`;
+        this._shadowColour = colour;
     }
 
     /* Export all of the features as one line, so it can be written as a CSV entry */
