@@ -9,6 +9,7 @@ class LabelObject
         // TODO: Handle all of the tokens individually
         this._id = Number.parseInt(tokens[0]);
         this._backgroundColour = tokens[1];
+        this._borderStyle = tokens[4];
         //..
         //..
         //..

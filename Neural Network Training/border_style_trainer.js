@@ -2,6 +2,7 @@ const NUM_IMAGES_TO_LOAD = 100;
 let imageList = [];
 let labels = [];
 let promises = [];
+let correctGuesses = 0;
 
 // Image classification data
 let featureExtractor;
@@ -60,11 +61,11 @@ function setup() {
 
     // Define the nn options
     const nnOptions = {
-        //topk: 3,
-        //learningRate: 0.0001,
-        //hiddenUnits: 100,
-        //epochs: 20,
-        numLabels: 6,
+        topk: 0,
+        learningRate: 0.0001,
+        hiddenUnits: 100,
+        epochs: 100,
+        numLabels: 9, //6 for colours, 9 for border width
     };
 
     // Setup the feature extractor
@@ -75,7 +76,7 @@ function setup() {
 }
 
 const ModelReady = () => {
-    console.log('Model Ready!');
+    console.log('Model Ready for BORDER STYLE!');
 };
 
 
@@ -106,9 +107,9 @@ const OnCSVLoaded = () => {
 
 const GiveImages = () => {
     // Loop through and add our images to the classifier with their corresponding label
-    for (let i = 0; i < imageList.length; i++) {
-        // Grab the label
-        const imageLabel = labels[i]._backgroundColour;
+    for (let i = 0; i < imageList.length * 0.8; i++) {
+        // Grab the label (border style in this case)
+        const imageLabel = labels[i]._borderStyle;
 
         // Use the promise structure
         promises.push(new Promise(resolve => {
@@ -175,17 +176,44 @@ const Train = () => {
     });
 };
 
-const TestClassify = () => {
+const TestClassify = () => 
+{
+    // Reset the correct guesses
+    correctGuesses = 0;
+
     // Test it on all of the data that we just did
-    for (let i = 0; i < imageList.length; i++) {
+    for (let i = imageList.length * 0.8; i < imageList.length; i++) 
+    {
         classifier.classify(imageList[i], function (err, result) 
         {
             if (err) {
                 console.error(err);
             }
-            else {
-                console.log(`[${i}] : label = ${labels[i]._backgroundColour}  ->  guess = ${result[0].label}  (confidence = ${result[0].confidence})`);
+            else 
+            {
+                //console.log(`[${i + 1}] : label = ${labels[i]._borderStyle}  ->  guess = ${result[0].label}  (confidence = ${result[0].confidence})`);
+                //console.log(labels[i]._borderStyle + ' -> ' + result);
+
+                // output the result
+                let outputString = `[${i + 1}] label = ${labels[i]._borderStyle}\n`;
+                
+                for (let j = 0; j < result.length; j++) {
+                    outputString += `guess [${j + 1}] = ${result[j].label}  (confidence = ${result[j].confidence})\n`;
+                }
+
+                console.log(outputString);
+
+                // keep track of correct guesses
+                if (labels[i]._borderStyle === result[0].label) {
+                    correctGuesses++;
+                }
             }
         });
-    }
+    }    
+};
+
+const OutputAccuracy = () => 
+{
+    // Write out the accuracy value to the console
+    console.log(`Attempts: ${imageList.length * 0.2}      Correct Guesses: ${correctGuesses}    Accuracy: ${100 * (correctGuesses / (0.2 * imageList.length))}%`);
 };
