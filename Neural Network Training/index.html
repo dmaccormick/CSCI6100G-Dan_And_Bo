@@ -2,7 +2,7 @@
 
 <head>
   <meta charset="UTF-8">
-  <title>Neural Network Training</title>
+  <title>Neural Network Testing</title>
 
   <!-- p5 -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.9.0/p5.min.js"></script>
@@ -14,39 +14,83 @@
 
   <!-- Scripts -->
   <script src="File_Reader.js"></script>
-  <script src="LabelObject.js"></script>
   <script src="NeuralNet.js"></script>
-  <script src="Main.js"></script>
-  <!-- <script src="border_style_trainer.js"></script> -->
-  <!-- <script src="bg_colour_trainer.js"></script> -->
+  <script src="Testing.js"></script>
 </head>
 
 <body>
+  <!-- Neural Net Loading -->
+  <h1>Load the Neural Nets</h1>
+  <button onclick="OnLoadNeuralNets()">Load Neural Networks</button>
+
   <!-- Input for Training -->
-  <h1>Training Information</h1>
-  <input type="file" id="labelCSV" accept=".csv" onchange="OnLabelCSVLoaded()" onclick="this.value=null">Select Label CSV</input><br>
-  <button id="giveImagesButton" onclick="OnGiveImages()" disabled=true>Give Images</button><br>
-  <button id="trainButton" onclick="OnTrain()" disabled=true>Train</button><br>
-  <button id="classifyButton" onclick="OnTestClassify()" disabled=true>Test Classify</button><br>
-  <button id="accuracyButton" onclick="OnOutputAccuracy()" disabled=true>Output Accuracy</button><br>
-  <br>
-  <br>
-  <br>
+  <br><br><br>
+  <h1>Select An Image To Guess On</h1>
+  <input type="file" id="imageUpload" accept=".png" onchange="OnImageUploaded()" onclick="this.value=null"></input><br>
+  <img id='buttonImg' src='' width="150", height="100">
 
-  <!-- File IO -->
-  <h1>Model File IO</h1>
-  <button id="saveModelButton" onclick="OnSaveModels()" disabled=true>Save Models</button>
-  <button id="loadModelButton" onclick="OnLoadModels()" disabled=true>Load Models</button>
-  <br>
-  <br>
-  <br>
+  <!-- Information About the Features and Guesses -->
+  <br><br><br>
+  <h1>Neural Net Guesses</h1>
 
-  <!-- Image Placement -->
-  <h1>Images</h1>
-  <div id ="imgDiv">
+  <button id='analyzeButton' onclick="OnAnalyzeImage()" disabled=true>Analyze Image</button>
 
-  </div> 
+  <table>
+    <thead>
 
+      <tr>
+        <td><strong>Feature</strong></td>
+        <td><strong>NN Output</strong></td>
+      </tr>
+
+    </thead>
+
+    <tbody>
+      <tr>
+        <td>Background Colour</td>
+        <td id='nn_background_colour'></td>
+      </tr>
+
+      <tr>
+        <td>Border Width</td>
+        <td id='nn_border_width'></td>
+      </tr>
+
+      <tr>
+        <td>Border Colour</td>
+        <td id='nn_border_colour'></td>
+      </tr>
+
+      <tr>
+        <td>Border Style</td>
+        <td id='nn_border_style'></td>
+      </tr>
+
+      <tr>
+        <td>Font Size</td>
+        <td id='nn_font_size'></td>
+      </tr>
+
+      <tr>
+        <td>Border Radius</td>
+        <td id='nn_border_radius'></td>
+      </tr>
+
+      <tr>
+        <td>Shadow Size</td>
+        <td id='nn_shadow_size'></td>
+      </tr>
+
+      <tr>
+        <td>Shadow Colour</td>
+        <td id='nn_shadow_colour'></td>
+      </tr>
+      
+    </tbody>
+  </table>
+
+  <br>
+  <button id='generateButton' onclick="OnGenerateCSSButton()" disabled=true>Generate CSS Button</button>
 </body>
 
 </html>

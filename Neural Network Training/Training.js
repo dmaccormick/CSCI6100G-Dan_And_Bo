@@ -2,7 +2,7 @@
 const IMAGE_FOLDER_PATH = 'data/';
 const FILENAME_BASE = 'Button_Img_ (';
 const IMAGE_OFFSET = 0;
-const NUM_IMAGES_TOTAL = 600;
+const NUM_IMAGES_TOTAL = 20;
 const TRAINING_PERCENTAGE = 0.8;
 const LAST_TRAINING_INDEX = TRAINING_PERCENTAGE * NUM_IMAGES_TOTAL;
 
@@ -32,14 +32,13 @@ function preload()
     //neuralNets.push(new NeuralNet('nn_bg_300', '_backgroundColour', 6));
     //neuralNets.push(new NeuralNet('nn_bg_600', '_backgroundColour', 6));
     //neuralNets.push(new NeuralNet('nn_bg_1200', '_backgroundColour', 6));
-
-    // neuralNets.push(new NeuralNet('nn_background_colour', '_backgroundColour', 6));
-    // neuralNets.push(new NeuralNet('nn_border_width', '_borderWidth', 10));
-    // neuralNets.push(new NeuralNet('nn_border_colour', '_borderColour', 6));
-    // neuralNets.push(new NeuralNet('nn_border_style', '_borderStyle', 8));
-    // neuralNets.push(new NeuralNet('nn_font_size', '_fontSize', 9));
-    // neuralNets.push(new NeuralNet('nn_border_radius', '_borderRadius', 9));
-    // neuralNets.push(new NeuralNet('nn_shadow_size', '_shadowSize', 10));
+    neuralNets.push(new NeuralNet('nn_background_colour', '_backgroundColour', 6));
+    neuralNets.push(new NeuralNet('nn_border_width', '_borderWidth', 10));
+    neuralNets.push(new NeuralNet('nn_border_colour', '_borderColour', 6));
+    neuralNets.push(new NeuralNet('nn_border_style', '_borderStyle', 8));
+    neuralNets.push(new NeuralNet('nn_font_size', '_fontSize', 9));
+    neuralNets.push(new NeuralNet('nn_border_radius', '_borderRadius', 9));
+    neuralNets.push(new NeuralNet('nn_shadow_size', '_shadowSize', 10));
     neuralNets.push(new NeuralNet('nn_shadow_colour', '_shadowColour', 6));
 
     // Load all of the images in
