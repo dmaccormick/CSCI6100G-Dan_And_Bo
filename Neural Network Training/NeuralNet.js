@@ -48,11 +48,11 @@ class NeuralNet
         // Cannot pass 'this' to the callback below but we can pass values instead 
         const nameValue = this._name;
 
-        // Setup the feature extractor
-        this._featureExtractor = ml5.featureExtractor("MobileNet", nnOptions, function(){console.log(`[${nameValue}] model ready`);});
+        // Setup a temporary feature extractor
+        const featureExtractor = ml5.featureExtractor("MobileNet", nnOptions, function(){console.log(`[${nameValue}] model ready`);});
 
         // Setup the classifier object
-        this._classifier = this._featureExtractor.classification();
+        this._classifier = featureExtractor.classification();
 
         // Setup the promises list. These are all promises that will need to be resolved when adding data to the model
         this._promises = [];
@@ -202,5 +202,29 @@ class NeuralNet
 
         // Write the string to the console
         console.log(accuracyInfo);
+    }
+
+    /**
+     * Save the model to a file. The name of the file will be this neural network's _name variable
+     */
+    SaveModel()
+    {
+        // Cannot pass 'this' to the callback below directly but we can pass values instead 
+        const nameValue = this._name;
+
+        // Download the model. Use the model's name as the name of the file
+        this._classifier.save(function(){console.log(`Saving model for [${nameValue}] ...`);}, nameValue);
+    }
+
+    /**
+     * Load the model from a file. The name that it will look for is this neural network's _name variable
+     */
+    LoadModel()
+    {
+        // Cannot pass 'this' to the callback below directly but we can pass values instead 
+        const nameValue = this._name;
+
+        // Try to read in the model. The model should be saved with the same name
+        this._classifier.load(`data/models/${nameValue}.json`, function(){console.log(`Loading model for [${nameValue}] ...`);});
     }
 }

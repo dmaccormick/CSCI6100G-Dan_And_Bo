@@ -1,7 +1,8 @@
 //--- Constant Data ---//
 const IMAGE_FOLDER_PATH = 'data/';
 const FILENAME_BASE = 'Button_Img_ (';
-const NUM_IMAGES_TOTAL = 50;
+const IMAGE_OFFSET = 0;
+const NUM_IMAGES_TOTAL = 600;
 const TRAINING_PERCENTAGE = 0.8;
 const LAST_TRAINING_INDEX = TRAINING_PERCENTAGE * NUM_IMAGES_TOTAL;
 
@@ -26,13 +27,19 @@ function preload()
     labelObjects = [];
 
     // Initialize the neural net list
-    neuralNets.push(new NeuralNet('nn_background_colour', '_backgroundColour', 6));
-    neuralNets.push(new NeuralNet('nn_border_width', '_borderWidth', 10));
-    neuralNets.push(new NeuralNet('nn_border_colour', '_borderColour', 6));
-    neuralNets.push(new NeuralNet('nn_border_style', '_borderStyle', 8));
-    neuralNets.push(new NeuralNet('nn_font_size', '_fontSize', 9));
-    neuralNets.push(new NeuralNet('nn_border_radius', '_borderRadius', 9));
-    neuralNets.push(new NeuralNet('nn_shadow_size', '_shadowSize', 10));
+    //neuralNets.push(new NeuralNet('nn_bg_10', '_backgroundColour', 6));
+    //neuralNets.push(new NeuralNet('nn_bg_100', '_backgroundColour', 6));
+    //neuralNets.push(new NeuralNet('nn_bg_300', '_backgroundColour', 6));
+    //neuralNets.push(new NeuralNet('nn_bg_600', '_backgroundColour', 6));
+    //neuralNets.push(new NeuralNet('nn_bg_1200', '_backgroundColour', 6));
+
+    // neuralNets.push(new NeuralNet('nn_background_colour', '_backgroundColour', 6));
+    // neuralNets.push(new NeuralNet('nn_border_width', '_borderWidth', 10));
+    // neuralNets.push(new NeuralNet('nn_border_colour', '_borderColour', 6));
+    // neuralNets.push(new NeuralNet('nn_border_style', '_borderStyle', 8));
+    // neuralNets.push(new NeuralNet('nn_font_size', '_fontSize', 9));
+    // neuralNets.push(new NeuralNet('nn_border_radius', '_borderRadius', 9));
+    // neuralNets.push(new NeuralNet('nn_shadow_size', '_shadowSize', 10));
     neuralNets.push(new NeuralNet('nn_shadow_colour', '_shadowColour', 6));
 
     // Load all of the images in
@@ -74,6 +81,9 @@ const OnLabelCSVLoaded = () =>
         // Enable the next button
         document.getElementById('giveImagesButton').disabled = false;
 
+        // Also enable the load button since labels are all that is needed for classifying with a pre-trained model
+        document.getElementById('loadModelButton').disabled = false;
+
         // Output a feedback message
         console.log(`Label CSV loaded. Found [${labelObjects.length}] labels...`);
     });
@@ -86,7 +96,7 @@ const OnGiveImages = () =>
 
     // Split the image and label lists so we only grab the first x% for training. The rest are for testing
     const trainingImages = imageList.slice(0, LAST_TRAINING_INDEX); 
-    const trainingLabels = labelObjects.slice(0, LAST_TRAINING_INDEX);
+    const trainingLabels = labelObjects.slice(IMAGE_OFFSET, IMAGE_OFFSET + LAST_TRAINING_INDEX);
 
     // Give all of the training images to the neural nets
     neuralNets.forEach(nn => nn.AddImages(trainingImages, trainingLabels));
@@ -105,6 +115,9 @@ const OnTrain = () =>
 
     // Enable the next button
     document.getElementById('classifyButton').disabled = false;
+
+    // Also enable the save button since the models are trained
+    document.getElementById('saveModelButton').disabled = false;
 };
 
 const OnTestClassify = () =>
@@ -114,7 +127,7 @@ const OnTestClassify = () =>
 
     // Split the image and label lists so we get the set reserved for testing
     const testingImages = imageList.slice(LAST_TRAINING_INDEX, NUM_IMAGES_TOTAL);
-    const testingLabels = labelObjects.slice(LAST_TRAINING_INDEX, NUM_IMAGES_TOTAL);
+    const testingLabels = labelObjects.slice(IMAGE_OFFSET + LAST_TRAINING_INDEX, IMAGE_OFFSET + NUM_IMAGES_TOTAL);
 
     // Give the images to all of the neural nets and have them attempt to classify
     neuralNets.forEach(nn => nn.TestClassify(testingImages, testingLabels, true));
@@ -132,6 +145,30 @@ const OnOutputAccuracy = () =>
     neuralNets.forEach(nn => nn.OutputAccuracy());
 };
 
+const OnSaveModels = () =>
+{
+    // Output a feedback message
+    console.log('Saving neural nets...');
+
+    // Save all of the neural nets out to files
+    neuralNets.forEach(nn => nn.SaveModel());
+};
+
+const OnLoadModels = () =>
+{
+    // Output a feedback message
+    console.log('Loading neural nets...');
+
+    // Load all of the neural net models from files
+    neuralNets.forEach(nn => nn.LoadModel());
+
+    // Enable the classify button since the models are now loaded
+    document.getElementById('classifyButton').disabled = false;
+
+    // Also enable the save button since the models are trained
+    document.getElementById('saveModelButton').disabled = false;
+};
+
 
 
 //--- Utility Methods ---//
@@ -144,7 +181,7 @@ const LoadImages = () =>
     const imgDiv = document.getElementById('imgDiv'); 
 
     // Load in as many images as expected
-    for (let i = 0; i < NUM_IMAGES_TOTAL; i++)
+    for (let i = IMAGE_OFFSET; i < IMAGE_OFFSET + NUM_IMAGES_TOTAL; i++)
     {
         // Determine the full file name (ex: data/Button_Img_(1576).png)
         // The images start at 1 so that's why i is increased by 1
