@@ -15,42 +15,38 @@
   <!-- Scripts -->
   <script src="File_Reader.js"></script>
   <script src="LabelObject.js"></script>
-  <script src="border_style_trainer.js"></script>
+  <script src="NeuralNet.js"></script>
+  <script src="Main.js"></script>
+  <!-- <script src="border_style_trainer.js"></script> -->
   <!-- <script src="bg_colour_trainer.js"></script> -->
 </head>
 
 <body>
-  <!-- <label for="avatar">Load Model:</label>
-  <input type="file" id="load" multiple     /> -->
-
   <!-- Input for Training -->
   <h1>Training Information</h1>
-  <input type="text" id="firstImageName" value="Screenshot_2019-12-04 Button Generation Practice(0)">First Image Name</input><br>
-  <input type="file" id="labelCSV" accept=".csv" onchange="OnCSVLoaded()" onclick="this.value=null">Select Label CSV</input><br>
-  <button onclick="GiveImages()">Give Images</button>
-  <button onclick="Train()" id="trainButton" disabled=true>Train</button>
-  <button onclick="TestClassify()">Test Classify</button>
-  <button onclick="OutputAccuracy()">Output Accuracy</button>
-  <br>
-  <br>
-  <br>
-  <h1>Model File IO</h1>
-  <button onclick="SaveModel()">Save Model</button>
-  <button onclick="LoadModel()">Load Model</button>
+  <input type="file" id="labelCSV" accept=".csv" onchange="OnLabelCSVLoaded()" onclick="this.value=null">Select Label CSV</input><br>
+  <button id="giveImagesButton" onclick="OnGiveImages()" disabled=true>Give Images</button><br>
+  <button id="trainButton" onclick="OnTrain()" disabled=true>Train</button><br>
+  <button id="classifyButton" onclick="OnTestClassify()" disabled=true>Test Classify</button><br>
+  <button id="accuracyButton" onclick="OnOutputAccuracy()" disabled=true>Output Accuracy</button><br>
   <br>
   <br>
   <br>
 
-  <!-- Input for Testing -->
-  <h1>Testing Information</h1>
-  <input type="file" id="testImageInput" onchange="LoadInputImage()">Select Image To Test</input>
+  <!-- File IO -->
+  <h1>Model File IO</h1>
+  <button id="saveModelButton" onclick="OnSaveModels()" disabled=true>Save Models</button>
+  <button id="loadModelButton" onclick="OnLoadModels()" disabled=true>Load Models</button>
+  <br>
+  <br>
+  <br>
 
   <!-- Image Placement -->
+  <h1>Images</h1>
   <div id ="imgDiv">
-      
-  </div>
-  
-  
+
+  </div> 
+
 </body>
 
 </html>
