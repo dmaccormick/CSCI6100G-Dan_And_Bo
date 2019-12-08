@@ -16,6 +16,9 @@
   <script src="File_Reader.js"></script>
   <script src="NeuralNet.js"></script>
   <script src="Testing.js"></script>
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 
 <body>
@@ -91,6 +94,21 @@
 
   <br>
   <button id='generateButton' onclick="OnGenerateCSSButton()" disabled=true>Generate CSS Button</button>
+  <br>
+  <h1>Generated Buttons</h1>
+  <br>
+
+  <table>
+    <thead>
+      <tr>
+        <td style="width: 150;"><strong>Groundtruth</strong></td>
+        <td style="width: 150;"><strong>Result</strong></td>
+      </tr>
+    </thead>
+    <tbody id='buttonView'>
+
+    </tbody>
+  </table>
 </body>
 
 </html>

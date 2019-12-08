@@ -1,0 +1,9 @@
+.generatedButtonView
+{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    align-content: center;
+    width: 150;
+    height: 100;
+}
