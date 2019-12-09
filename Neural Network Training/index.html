@@ -24,91 +24,287 @@
 <body>
   <!-- Neural Net Loading -->
   <h1>Load the Neural Nets</h1>
-  <button onclick="OnLoadNeuralNets()">Load Neural Networks</button>
+  <button onclick="OnLoadNeuralNets()">Load Neural Networks</button><br>
 
-  <!-- Input for Training -->
-  <br><br><br>
-  <h1>Select An Image To Guess On</h1>
-  <input type="file" id="imageUpload" accept=".png" onchange="OnImageUploaded()" onclick="this.value=null"></input><br>
-  <img id='buttonImg' src='' width="150", height="100">
+  <!-- The image loading and viewing areas -->
+  <div id="trainingFrame">
 
-  <!-- Information About the Features and Guesses -->
-  <br><br><br>
-  <h1>Neural Net Guesses</h1>
+    <!-- Column 1 - The Base State -->
+    <div id="col_BaseState" class="nnColumn">
 
-  <button id='analyzeButton' onclick="OnAnalyzeImage()" disabled=true>Analyze Image</button>
+      <!-- Image Input -->
+      <h1>Select BASE State</h1>
+      <input type="file" id="imageUpload_0" accept=".png" onchange="OnImageUploaded(0)" onclick="this.value=null"></input><br>
+      <img id='buttonImg_0' src='' width="150" , height="100">
 
-  <table>
-    <thead>
+      <!-- Neural Net Analysis -->
+      <h1>Neural Net Guesses</h1>
+      <button id='analyzeButton_0' onclick="OnAnalyzeImage(0)" disabled=true>Analyze Image</button>
 
-      <tr>
-        <td><strong>Feature</strong></td>
-        <td><strong>NN Output</strong></td>
-      </tr>
+      <!-- Neural Net Table Output -->
+      <table>
+        <thead>
 
-    </thead>
+          <tr>
+            <td><strong>Feature</strong></td>
+            <td><strong>NN Output</strong></td>
+          </tr>
 
-    <tbody>
-      <tr>
-        <td>Background Colour</td>
-        <td id='nn_background_colour'></td>
-      </tr>
+        </thead>
 
-      <tr>
-        <td>Border Width</td>
-        <td id='nn_border_width'></td>
-      </tr>
+        <tbody>
+          <tr>
+            <td>Background Colour</td>
+            <td id='nn_background_colour_0'></td>
+          </tr>
 
-      <tr>
-        <td>Border Colour</td>
-        <td id='nn_border_colour'></td>
-      </tr>
+          <tr>
+            <td>Border Width</td>
+            <td id='nn_border_width_0'></td>
+          </tr>
 
-      <tr>
-        <td>Border Style</td>
-        <td id='nn_border_style'></td>
-      </tr>
+          <tr>
+            <td>Border Colour</td>
+            <td id='nn_border_colour_0'></td>
+          </tr>
 
-      <tr>
-        <td>Font Size</td>
-        <td id='nn_font_size'></td>
-      </tr>
+          <tr>
+            <td>Border Style</td>
+            <td id='nn_border_style_0'></td>
+          </tr>
 
-      <tr>
-        <td>Border Radius</td>
-        <td id='nn_border_radius'></td>
-      </tr>
+          <tr>
+            <td>Font Size</td>
+            <td id='nn_font_size_0'></td>
+          </tr>
 
-      <tr>
-        <td>Shadow Size</td>
-        <td id='nn_shadow_size'></td>
-      </tr>
+          <tr>
+            <td>Border Radius</td>
+            <td id='nn_border_radius_0'></td>
+          </tr>
 
-      <tr>
-        <td>Shadow Colour</td>
-        <td id='nn_shadow_colour'></td>
-      </tr>
-      
-    </tbody>
-  </table>
+          <tr>
+            <td>Shadow Size</td>
+            <td id='nn_shadow_size_0'></td>
+          </tr>
 
-  <br>
-  <button id='generateButton' onclick="OnGenerateCSSButton()" disabled=true>Generate CSS Button</button>
-  <br>
-  <h1>Generated Buttons</h1>
-  <br>
+          <tr>
+            <td>Shadow Colour</td>
+            <td id='nn_shadow_colour_0'></td>
+          </tr>
 
-  <table>
-    <thead>
-      <tr>
-        <td style="width: 150;"><strong>Groundtruth</strong></td>
-        <td style="width: 150;"><strong>Result</strong></td>
-      </tr>
-    </thead>
-    <tbody id='buttonView'>
+        </tbody>
+      </table>
 
-    </tbody>
-  </table>
+      <br>
+      <button id='generateButton_0' onclick="OnGenerateCSSButton(0)" disabled=true>Generate BASE CSS</button>
+      <br>
+      <h1>Generated CSS</h1>
+
+      <table>
+        <thead>
+          <tr>
+            <td class="outputTableHeader"><strong>Groundtruth</strong></td>
+            <td class="outputTableHeader"><strong>Result</strong></td>
+          </tr>
+        </thead>
+
+        <!-- Instantiate the ground truth and CSS results here -->
+        <tbody id='buttonView_0'>
+
+        </tbody>
+      </table>
+    </div>
+
+
+    <!-- Column 2 - The Hover State -->
+    <div id="col2_BaseState" class="nnColumn">
+
+        <!-- Image Input -->
+        <h1>Select HOVER State</h1>
+        <input type="file" id="imageUpload_1" accept=".png" onchange="OnImageUploaded(1)" onclick="this.value=null"></input><br>
+        <img id='buttonImg_1' src='' width="150" , height="100">
+  
+        <!-- Neural Net Analysis -->
+        <h1>Neural Net Guesses</h1>
+        <button id='analyzeButton_1' onclick="OnAnalyzeImage(1)" disabled=true>Analyze Image</button>
+  
+        <!-- Neural Net Table Output -->
+        <table>
+          <thead>
+  
+            <tr>
+              <td><strong>Feature</strong></td>
+              <td><strong>NN Output</strong></td>
+            </tr>
+  
+          </thead>
+  
+          <tbody>
+            <tr>
+              <td>Background Colour</td>
+              <td id='nn_background_colour_1'></td>
+            </tr>
+  
+            <tr>
+              <td>Border Width</td>
+              <td id='nn_border_width_1'></td>
+            </tr>
+  
+            <tr>
+              <td>Border Colour</td>
+              <td id='nn_border_colour_1'></td>
+            </tr>
+  
+            <tr>
+              <td>Border Style</td>
+              <td id='nn_border_style_1'></td>
+            </tr>
+  
+            <tr>
+              <td>Font Size</td>
+              <td id='nn_font_size_1'></td>
+            </tr>
+  
+            <tr>
+              <td>Border Radius</td>
+              <td id='nn_border_radius_1'></td>
+            </tr>
+  
+            <tr>
+              <td>Shadow Size</td>
+              <td id='nn_shadow_size_1'></td>
+            </tr>
+  
+            <tr>
+              <td>Shadow Colour</td>
+              <td id='nn_shadow_colour_1'></td>
+            </tr>
+  
+          </tbody>
+        </table>
+  
+        <br>
+        <button id='generateButton_1' onclick="OnGenerateCSSButton(1)" disabled=true>Generate CLICKED CSS</button>
+        <br>
+        <h1>Generated CSS</h1>
+  
+        <table>
+          <thead>
+            <tr>
+              <td class="outputTableHeader"><strong>Groundtruth</strong></td>
+              <td class="outputTableHeader"><strong>Result</strong></td>
+            </tr>
+          </thead>
+  
+          <!-- Instantiate the ground truth and CSS results here -->
+          <tbody id='buttonView_1'>
+  
+          </tbody>
+        </table>
+      </div>
+
+
+
+    <!-- Column 2 - The Clicked State -->
+    <div id="col3_ClickedState" class="nnColumn">
+
+        <!-- Image Input -->
+        <h1>Select CLICKED State</h1>
+        <input type="file" id="imageUpload_2" accept=".png" onchange="OnImageUploaded(2)" onclick="this.value=null"></input><br>
+        <img id='buttonImg_2' src='' width="150" , height="100">
+  
+        <!-- Neural Net Analysis -->
+        <h1>Neural Net Guesses</h1>
+        <button id='analyzeButton_2' onclick="OnAnalyzeImage(2)" disabled=true>Analyze Image</button>
+  
+        <!-- Neural Net Table Output -->
+        <table>
+          <thead>
+  
+            <tr>
+              <td><strong>Feature</strong></td>
+              <td><strong>NN Output</strong></td>
+            </tr>
+  
+          </thead>
+  
+          <tbody>
+            <tr>
+              <td>Background Colour</td>
+              <td id='nn_background_colour_2'></td>
+            </tr>
+  
+            <tr>
+              <td>Border Width</td>
+              <td id='nn_border_width_2'></td>
+            </tr>
+  
+            <tr>
+              <td>Border Colour</td>
+              <td id='nn_border_colour_2'></td>
+            </tr>
+  
+            <tr>
+              <td>Border Style</td>
+              <td id='nn_border_style_2'></td>
+            </tr>
+  
+            <tr>
+              <td>Font Size</td>
+              <td id='nn_font_size_2'></td>
+            </tr>
+  
+            <tr>
+              <td>Border Radius</td>
+              <td id='nn_border_radius_2'></td>
+            </tr>
+  
+            <tr>
+              <td>Shadow Size</td>
+              <td id='nn_shadow_size_2'></td>
+            </tr>
+  
+            <tr>
+              <td>Shadow Colour</td>
+              <td id='nn_shadow_colour_2'></td>
+            </tr>
+  
+          </tbody>
+        </table>
+  
+        <br>
+        <button id='generateButton_2' onclick="OnGenerateCSSButton(2)" disabled=true>Generate HOVER CSS</button>
+        <br>
+        <h1>Generated CSS</h1>
+  
+        <table>
+          <thead>
+            <tr>
+              <td class="outputTableHeader"><strong>Groundtruth</strong></td>
+              <td class="outputTableHeader"><strong>Result</strong></td>
+            </tr>
+          </thead>
+  
+          <!-- Instantiate the ground truth and CSS results here -->
+          <tbody id='buttonView_2'>
+  
+          </tbody>
+        </table>
+      </div>
+
+
+
+      <!-- Column 4 - The resulting clickable buttons -->
+      <div id="col_Result" class="nnColumn">
+          <h1>Interactable Buttons</h1>
+          <button onclick="OnGenerateInteractable()">Generate Interactable</button>
+          <div id="interactableButtons">
+
+          </div>
+      </div>
+
+  </div>
 </body>
 
 </html>
