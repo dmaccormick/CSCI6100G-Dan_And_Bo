@@ -1,0 +1,52 @@
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>Neural Network Training</title>
+
+  <!-- p5 -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.9.0/p5.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.9.0/addons/p5.dom.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.9.0/addons/p5.sound.min.js"></script>
+
+  <!-- ml5 -->
+  <script src="https://unpkg.com/ml5@0.4.3/dist/ml5.min.js"></script>
+
+  <!-- Scripts -->
+  <script src="File_Reader.js"></script>
+  <script src="LabelObject.js"></script>
+  <script src="NeuralNet.js"></script>
+  <script src="Training.js"></script>
+  <!-- <script src="border_style_trainer.js"></script> -->
+  <!-- <script src="bg_colour_trainer.js"></script> -->
+</head>
+
+<body>
+  <!-- Input for Training -->
+  <h1>Training Information</h1>
+  <input type="file" id="labelCSV" accept=".csv" onchange="OnLabelCSVLoaded()" onclick="this.value=null">Select Label CSV</input><br>
+  <button id="giveImagesButton" onclick="OnGiveImages()" disabled=true>Give Images</button><br>
+  <button id="trainButton" onclick="OnTrain()" disabled=true>Train</button><br>
+  <button id="classifyButton" onclick="OnTestClassify()" disabled=true>Test Classify</button><br>
+  <button id="accuracyButton" onclick="OnOutputAccuracy()" disabled=true>Output Accuracy</button><br>
+  <br>
+  <br>
+  <br>
+
+  <!-- File IO -->
+  <h1>Model File IO</h1>
+  <button id="saveModelButton" onclick="OnSaveModels()" disabled=true>Save Models</button>
+  <button id="loadModelButton" onclick="OnLoadModels()" disabled=true>Load Models</button>
+  <br>
+  <br>
+  <br>
+
+  <!-- Image Placement -->
+  <h1>Images</h1>
+  <div id ="imgDiv">
+
+  </div> 
+
+</body>
+
+</html>

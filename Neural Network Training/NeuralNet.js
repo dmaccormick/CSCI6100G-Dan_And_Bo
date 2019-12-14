@@ -205,6 +205,39 @@ class NeuralNet
     }
 
     /**
+     * Classify a single image and return the response. It doesn't need a label since this would be a deployed neural net
+     * 
+     * @param {HTMLElement} image The image you want to classify
+     * @param {HTMLElement} outputElement The element to write the answer to, in this case a <td> element
+     */
+    Classify(image, outputElement)
+    {
+        // Identify possible errors
+        console.assert(image instanceof HTMLElement, 'image must be an HTMLElement');
+        console.assert(outputElement instanceof HTMLElement, 'outputElement must be an HTMLElement');
+
+        // Classify the image and handle the results
+        this._classifier.classify(image, function(error, results) 
+        {
+            // If there was an error, output it. Otherwise, handle the result
+            if (error) 
+            {
+                // Write out the error
+                console.error(error);
+            }
+            else
+            {
+                // Get the top result which is the guess
+                const guess = results[0].label;
+
+                // Log the result (TEMP: should really return it to be used OR display it in the HTML or something)
+                console.log(guess);
+                outputElement.textContent = guess;
+            }
+        });
+    }
+
+    /**
      * Save the model to a file. The name of the file will be this neural network's _name variable
      */
     SaveModel()

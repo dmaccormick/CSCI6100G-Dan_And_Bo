@@ -1,0 +1,27 @@
+.generatedButtonView
+{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    align-content: center;
+    width: 150;
+    height: 100;
+}
+
+.nnColumn
+{
+    width: 25%;
+}
+
+.outputTableHeader
+{
+    width: 145px;
+    align-content: center;
+    text-align: center;
+}
+
+#trainingFrame
+{
+    display: inline-flex;
+    width: 100%;
+}
