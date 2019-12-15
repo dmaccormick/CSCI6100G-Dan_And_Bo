@@ -2,17 +2,20 @@
 Final project repository for CSCI 6100G - Artificial Intelligence for Software Engineering. Daniel MacCormick and Bo Yu
 
 ***** 1 - Folder Contents *****
+
 On the top level, you should see two folders: "Data Generation" and "Neural Network Training".
 
 
 
 ***** 2 - Data Generation *****
+
 The data generation folder contains the web application that was used to generate the buttons.
 
 Inside the main folder are two sub-folders: "Button Generation JS" and "Mouse Control AutoIT".
 
 
 --- 2.1 - Mouse Control AutoIT ---
+
 This folder contains an AutoIT script called "AutoScreenshot". In order to execute this script, you will need to install AutoIT.
 
 AutoIT can be installed from this link: https://www.autoitscript.com/site/autoit/downloads/
@@ -23,6 +26,7 @@ This is the script that automatically moves the mouse and performs the click ope
 
 
 --- 2.2 - Button Generation JS ---
+
 This is the project folder for the web application we used to generate the button images.
 
 The CSS folder simply contains basic styling information for the box surrounding the generated images.
@@ -42,6 +46,7 @@ Finally, press the "Download Labels" button to save a CSV with all of the labels
 
 
 ***** 3 - Neural Network Training *****
+
 This folder contains the project for the actual neural network training and testing pages.
 
 The data/ folder contains the pre-trained models that were trained on 600 images.
@@ -52,6 +57,7 @@ NOTE: In order for either page to work, the folder must be hosted on a local ser
 
 
 --- 3.1 - Training ---
+
 The training page is where we actually went about training the neural network models.
 
 It automatically loads a certain number of the button images and displays them as HTML images.
@@ -73,6 +79,7 @@ NOTE: It will automatically load based on the name of the neural network saved i
 
 
 --- 3.2 - index (Deployment) ---
+
 This page is called index so that when running in the local server, it is loaded first.
 
 This is the page where we can actually use the trained models to analyze buttons and generate CSS for them.
