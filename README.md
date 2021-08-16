@@ -1,20 +1,20 @@
-# CSCI6100G-Dan_And_Bo
-Final project repository for CSCI 6100G - Artificial Intelligence for Software Engineering. Daniel MacCormick and Bo Yu
+# Neural Network That Identifies CSS
 
-***** 1 - Folder Contents *****
+## Introduction
+Final project repository for CSCI 6100G - Artificial Intelligence for Software Engineering. Daniel MacCormick and Bo Yu. 
+Our goal was to use convolutional neural networks to interpret the CSS code for elements on a web page. To keep the scope contained enough for a course project, we focused specifically on buttons.
+
+## 1 - Folder Contents
 
 On the top level, you should see two folders: "Data Generation" and "Neural Network Training".
 
-
-
-***** 2 - Data Generation *****
+## 2 - Data Generation
 
 The data generation folder contains the web application that was used to generate the buttons.
 
 Inside the main folder are two sub-folders: "Button Generation JS" and "Mouse Control AutoIT".
 
-
---- 2.1 - Mouse Control AutoIT ---
+### 2.1 - Mouse Control AutoIT 
 
 This folder contains an AutoIT script called "AutoScreenshot". In order to execute this script, you will need to install AutoIT.
 
@@ -24,8 +24,7 @@ Alternatively, you can simply open the script in a text editor such as Notepad++
 
 This is the script that automatically moves the mouse and performs the click operations necessary for using the data generation program efficiently.
 
-
---- 2.2 - Button Generation JS ---
+### 2.2 - Button Generation JS 
 
 This is the project folder for the web application we used to generate the button images.
 
@@ -43,9 +42,7 @@ Optionally use the Firefox screenshot feature to save the image.
 Continue generating for as many buttons as you want in the dataset.
 Finally, press the "Download Labels" button to save a CSV with all of the labels.
 
-
-
-***** 3 - Neural Network Training *****
+## 3 - Neural Network Training
 
 This folder contains the project for the actual neural network training and testing pages.
 
@@ -55,8 +52,7 @@ The data/ folder also contains the full library of 10,000 button images, along w
 There are two html pages in this folder, "index" and "training".
 NOTE: In order for either page to work, the folder must be hosted on a local server. Otherwise, the images will not upload correctly.
 
-
---- 3.1 - Training ---
+### 3.1 - Training 
 
 The training page is where we actually went about training the neural network models.
 
@@ -77,8 +73,7 @@ The "Save Models" button will automatically download the trained models to the D
 The "Load Models" button will import the models that are stored in the data/ folder.
 NOTE: It will automatically load based on the name of the neural network saved in the code.
 
-
---- 3.2 - index (Deployment) ---
+### 3.2 - index (Deployment)
 
 This page is called index so that when running in the local server, it is loaded first.
 
