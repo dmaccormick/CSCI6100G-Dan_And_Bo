@@ -1,7 +1,7 @@
 # Neural Network That Identifies CSS
 
 ## Introduction
-Final project repository for CSCI 6100G - Artificial Intelligence for Software Engineering. Daniel MacCormick and Bo Yu. 
+Final project repository for CSCI 6100G - Artificial Intelligence for Software Engineering. Daniel MacCormick and Bo Yu, 2020. 
 Our goal was to use convolutional neural networks to interpret the CSS code for elements on a web page. To keep the scope contained enough for a course project, we focused specifically on buttons.
 
 ## 1 - Folder Contents
